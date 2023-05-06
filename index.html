@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF*80">
+        <meta name="viewport" content="width= device-width">
+        <title>Encriptador</title>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1><img class="logo" src="imagenes/Logo.png"></h1>
+        </header>
+        <main>
+            <textarea class="entradad" type="text" rows="3" placeholder="Ingrese el texto aqui"></textarea>
+            <ul>
+                <li class="caja">
+                    <div class="copias">
+                        <ul>
+                            <textarea name="salida" id="salida" cols="20" rows="7" style="display: inherit;"></textarea>
+                        </ul>
+                        <ul>
+                            <button id="copy" onclick="copiar()">Copiar</button>
+                        </ul>
+                    </div> 
+                    <div id="noencontrado">
+                        <img alt="No encontrado" src="imagenes/Muñeco.png">
+                        <h2 class="name"><strong>Ningún mensaje fue</strong></h2>
+                        <h2><strong>encontrado</strong></h2>
+                        <p class="mensaje">Ingresa el texto que desees encriptar o</p>
+                        <p>desencriptar</p>
+                    </div>
+                </li>
+                <div class="botones">
+                    <p>&#9888; Solo minúsuclas y sin acentos</p>
+                    <li>
+                        <button id="encriptar" onclick="enc()">Encriptar</button>
+                    </li>
+                    <li>
+                        <button id="desencriptar" onclick="des()">Desencriptar</button>
+                    </li>
+                </div>
+            </ul>
+        </main>
+        <footer>
+            <p class="copyright">&copy Copyright Luis Fernando Guzman Barriga - 2022</p>
+        </footer>
+    </body>
+</html>
+
+<script>
+    var textarea = document.querySelector("textarea");
+    textarea.focus();
+    function enc() {
+        if(textarea.value!="")
+        {
+            encriptado=textarea.value.replaceAll("e","enter");
+            encriptado=encriptado.replaceAll("i","imes");
+            encriptado=encriptado.replaceAll("a","ai");
+            encriptado=encriptado.replaceAll("o","ober");
+            encriptado=encriptado.replaceAll("u","ufat");
+            document.getElementById(id="noencontrado").style.display="none";
+            document.getElementById(id="salida").innerHTML=encriptado;
+            document.getElementById(id="salida").style.display="inherit";
+        }
+    }
+    function des() {
+        if(textarea.value!="")
+        {
+            desencriptado=textarea.value.replaceAll("ufat","u");
+            desencriptado=desencriptado.replaceAll("ober","o");
+            desencriptado=desencriptado.replaceAll("ai","a");
+            desencriptado=desencriptado.replaceAll("imes","i");
+            desencriptado=desencriptado.replaceAll("enter","e");
+            document.getElementById(id="noencontrado").style.display="none";
+            document.getElementById(id="salida").innerHTML=desencriptado;
+            document.getElementById(id="salida").style.display="inherit";
+        }
+    }
+    function copiar(){
+        var mensaje = document.getElementById(id="salida");
+        navigator.clipboard.writeText(mensaje.value);
+        alert("Texto copiado");
+    }
+</script>
